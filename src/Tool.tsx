@@ -6,7 +6,7 @@ import {
   WithTooltip,
   TooltipLinkList,
 } from "@storybook/components";
-import { TOOL_ID } from "./constants";
+import { PARAM_KEY, TOOL_ID } from "./constants";
 
 export type StoryContainerConfiguration = {
   id: string;
@@ -18,7 +18,7 @@ export const allStoryContainersId = "___ALL___";
 
 export const Tool = () => {
   const storyContainers = useParameter<StoryContainerConfiguration[]>(
-    "storyContainers",
+    PARAM_KEY,
     []
   );
   const [{ storyContainerAddon }, updateGlobals] = useGlobals();
