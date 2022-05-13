@@ -7,7 +7,11 @@ export const contextDecorator: DecoratorFunction = (StoryFn, context) => {
   const [{ contextsAddon }] = useGlobals();
   const { parameters } = context;
 
-  if (!contextsAddon || !contextsAddon.currentContextId) {
+  if (!contextsAddon?.currentContextId) {
+    return StoryFn();
+  }
+
+  if (!parameters.contexts) {
     return StoryFn();
   }
 
