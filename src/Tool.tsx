@@ -14,6 +14,8 @@ export type ContextConfiguration = {
   context: React.ComponentType;
 };
 
+export const allContextsId = "___ALL___";
+
 export const Tool = () => {
   const contexts = useParameter<ContextConfiguration[]>("contexts", []);
   const [{ contextsAddon }, updateGlobals] = useGlobals();
@@ -23,7 +25,6 @@ export const Tool = () => {
   if (contexts.length === 0) {
     return null;
   }
-
   return (
     <>
       <WithTooltip
@@ -60,6 +61,18 @@ export const Tool = () => {
                   },
                   active: context.id === currentContextId,
                 })),
+                {
+                  id: allContextsId,
+                  title: "All",
+                  onClick: () => {
+                    updateGlobals({
+                      contextsAddon: {
+                        currentContextId: allContextsId,
+                      },
+                    });
+                    onHide();
+                  },
+                },
               ]}
             />
           );
