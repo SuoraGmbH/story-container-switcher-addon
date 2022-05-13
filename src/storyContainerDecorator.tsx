@@ -2,13 +2,16 @@ import type { DecoratorFunction } from "@storybook/addons";
 import React from "react";
 import { allStoryContainersId, StoryContainerConfiguration } from "./Tool";
 import { PARAM_KEY } from "./constants";
-import { useModuleGlobals } from "./hook/useModuleGlobals";
+import {
+  useModuleGlobals,
+  useModuleGlobalsInDecorator,
+} from "./hook/useModuleGlobals";
 
 export const storyContainerDecorator: DecoratorFunction = (
   StoryFn,
   context
 ) => {
-  const [storyContainerAddon] = useModuleGlobals();
+  const [storyContainerAddon] = useModuleGlobalsInDecorator();
   const { parameters } = context;
   const storyContainers = parameters[
     PARAM_KEY
