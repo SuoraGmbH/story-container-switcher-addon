@@ -30,6 +30,10 @@ export const contextDecorator: DecoratorFunction = (StoryFn, context) => {
     (c: ContextConfiguration) => c.id === contextsAddon.currentContextId
   );
 
+  if (!currentContext) {
+    return StoryFn();
+  }
+
   const Decorator = currentContext.context;
 
   return <Decorator>{StoryFn()}</Decorator>;
