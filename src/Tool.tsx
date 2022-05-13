@@ -1,31 +1,78 @@
 import React, { useCallback } from "react";
-import { useGlobals } from "@storybook/api";
-import { Icons, IconButton } from "@storybook/components";
+import { useGlobals, useParameter } from "@storybook/api";
+import {
+  Icons,
+  IconButton,
+  WithTooltip,
+  TooltipLinkList,
+} from "@storybook/components";
 import { TOOL_ID } from "./constants";
 
-export const Tool = () => {
-  const [{ myAddon }, updateGlobals] = useGlobals();
+export type ContextConfiguration = {
+  id: string;
+  label: string;
+  context: React.ComponentType;
+};
 
-  const toggleMyTool = useCallback(
-    () =>
-      updateGlobals({
-        myAddon: myAddon ? undefined : true,
-      }),
-    [myAddon]
-  );
+export const Tool = () => {
+  const contexts = useParameter<ContextConfiguration[]>("contexts", []);
+  const [{ contextsAddon }, updateGlobals] = useGlobals();
+  const currentContextId = contextsAddon?.currentContextId;
+  // console.log({ contexts, contextsAddon });
+
+  if (contexts.length === 0) {
+    return null;
+  }
 
   return (
-    <IconButton
-      key={TOOL_ID}
-      active={myAddon}
-      title="Enable my addon"
-      onClick={toggleMyTool}
-    >
-      {/*
-        Checkout https://next--storybookjs.netlify.app/official-storybook/?path=/story/basics-icon--labels
-        for the full list of icons
-      */}
-      <Icons icon="lightning" />
-    </IconButton>
+    <>
+      <WithTooltip
+        placement="top"
+        trigger="click"
+        closeOnClick
+        tooltip={({ onHide }) => {
+          return (
+            <TooltipLinkList
+              links={[
+                {
+                  id: "none",
+                  title: "None",
+                  onClick: () => {
+                    updateGlobals({
+                      contextsAddon: {
+                        currentContextId: undefined,
+                      },
+                    });
+                    onHide();
+                  },
+                },
+                ...contexts.map((context) => ({
+                  id: context.id,
+                  title: context.label,
+                  onClick: () => {
+                    console.log(context.id);
+                    updateGlobals({
+                      contextsAddon: {
+                        currentContextId: context.id,
+                      },
+                    });
+                    onHide();
+                  },
+                  active: context.id === currentContextId,
+                })),
+              ]}
+            />
+          );
+        }}
+      >
+        <IconButton
+          key="context"
+          title="Change the context of the preview"
+          active={currentContextId !== undefined}
+        >
+          <Icons icon="box" />
+        </IconButton>
+      </WithTooltip>
+    </>
   );
 };

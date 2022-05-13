@@ -8,7 +8,7 @@ addons.register(ADDON_ID, () => {
   // Register the tool
   addons.add(TOOL_ID, {
     type: types.TOOL,
-    title: "My addon",
+    title: "Context Switcher",
     match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story)$/)),
     render: Tool,
   });
