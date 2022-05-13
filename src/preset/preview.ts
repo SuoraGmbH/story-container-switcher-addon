@@ -8,6 +8,6 @@
  *
  * https://storybook.js.org/docs/react/writing-stories/decorators#gatsby-focus-wrapper
  */
-import { contextDecorator } from "../contextDecorator";
+import { storyContainerDecorator } from "../storyContainerDecorator";
 
-export const decorators = [contextDecorator];
+export const decorators = [storyContainerDecorator];

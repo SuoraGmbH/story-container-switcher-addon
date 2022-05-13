@@ -39,11 +39,11 @@ Small.args = {
 };
 
 Primary.parameters = {
-  contexts: [
+  storyContainers: [
     {
       id: "modal",
       label: "Modal",
-      context: ({ children }) => (
+      container: ({ children }) => (
         <div
           style={{
             width: "100%",
@@ -61,7 +61,7 @@ Primary.parameters = {
     {
       id: "inline",
       label: "Inline",
-      context: ({ children }) => (
+      container: ({ children }) => (
         <div
           style={{
             width: "100%",

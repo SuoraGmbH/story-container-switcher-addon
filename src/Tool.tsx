@@ -8,25 +8,28 @@ import {
 } from "@storybook/components";
 import { TOOL_ID } from "./constants";
 
-export type ContextConfiguration = {
+export type StoryContainerConfiguration = {
   id: string;
   label: string;
-  context: React.ComponentType;
+  container: React.ComponentType;
 };
 
-export const allContextsId = "___ALL___";
+export const allStoryContainersId = "___ALL___";
 
 export const Tool = () => {
-  const contexts = useParameter<ContextConfiguration[]>("contexts", []);
-  const [{ contextsAddon }, updateGlobals] = useGlobals();
-  const currentContextId = contextsAddon?.currentContextId;
+  const storyContainers = useParameter<StoryContainerConfiguration[]>(
+    "storyContainers",
+    []
+  );
+  const [{ storyContainerAddon }, updateGlobals] = useGlobals();
+  const currentStoryContainerId = storyContainerAddon?.currentStoryContainerId;
 
-  if (contexts.length === 0) {
+  if (storyContainers.length === 0) {
     return null;
   }
   const active =
-    currentContextId !== undefined &&
-    Boolean(contexts.find(({ id }) => id === currentContextId));
+    currentStoryContainerId !== undefined &&
+    Boolean(storyContainers.find(({ id }) => id === currentStoryContainerId));
 
   return (
     <>
@@ -43,34 +46,34 @@ export const Tool = () => {
                   title: "None",
                   onClick: () => {
                     updateGlobals({
-                      contextsAddon: {
-                        currentContextId: undefined,
+                      storyContainerAddon: {
+                        currentStoryContainerId: undefined,
                       },
                     });
                     onHide();
                   },
                 },
-                ...contexts.map((context) => ({
-                  id: context.id,
-                  title: context.label,
+                ...storyContainers.map((storyContainer) => ({
+                  id: storyContainer.id,
+                  title: storyContainer.label,
                   onClick: () => {
-                    console.log(context.id);
+                    console.log(storyContainer.id);
                     updateGlobals({
-                      contextsAddon: {
-                        currentContextId: context.id,
+                      storyContainerAddon: {
+                        currentStoryContainerId: storyContainer.id,
                       },
                     });
                     onHide();
                   },
-                  active: context.id === currentContextId,
+                  active: storyContainer.id === currentStoryContainerId,
                 })),
                 {
-                  id: allContextsId,
+                  id: allStoryContainersId,
                   title: "All",
                   onClick: () => {
                     updateGlobals({
-                      contextsAddon: {
-                        currentContextId: allContextsId,
+                      storyContainerAddon: {
+                        currentStoryContainerId: allStoryContainersId,
                       },
                     });
                     onHide();
@@ -82,8 +85,8 @@ export const Tool = () => {
         }}
       >
         <IconButton
-          key="context"
-          title="Change the context of the preview"
+          key="storyContainer"
+          title="Change container that is wrapped around the story"
           active={active}
         >
           <Icons icon="box" />
