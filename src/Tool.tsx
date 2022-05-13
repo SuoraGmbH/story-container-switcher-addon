@@ -20,7 +20,6 @@ export const Tool = () => {
   const contexts = useParameter<ContextConfiguration[]>("contexts", []);
   const [{ contextsAddon }, updateGlobals] = useGlobals();
   const currentContextId = contextsAddon?.currentContextId;
-  // console.log({ contexts, contextsAddon });
 
   if (contexts.length === 0) {
     return null;
