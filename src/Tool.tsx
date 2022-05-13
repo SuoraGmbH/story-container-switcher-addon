@@ -7,6 +7,7 @@ import {
   TooltipLinkList,
 } from "@storybook/components";
 import { PARAM_KEY, TOOL_ID } from "./constants";
+import { useModuleGlobals } from "./hook/useModuleGlobals";
 
 export type StoryContainerConfiguration = {
   id: string;
@@ -21,7 +22,8 @@ export const Tool = () => {
     PARAM_KEY,
     []
   );
-  const [{ storyContainerAddon }, updateGlobals] = useGlobals();
+  // const [{ storyContainerAddon }, updateGlobals] = useGlobals();
+  const [storyContainerAddon, updateGlobals] = useModuleGlobals();
   const currentStoryContainerId = storyContainerAddon?.currentStoryContainerId;
 
   if (storyContainers.length === 0) {
@@ -46,9 +48,7 @@ export const Tool = () => {
                   title: "None",
                   onClick: () => {
                     updateGlobals({
-                      storyContainerAddon: {
-                        currentStoryContainerId: undefined,
-                      },
+                      currentStoryContainerId: undefined,
                     });
                     onHide();
                   },
@@ -59,9 +59,7 @@ export const Tool = () => {
                   onClick: () => {
                     console.log(storyContainer.id);
                     updateGlobals({
-                      storyContainerAddon: {
-                        currentStoryContainerId: storyContainer.id,
-                      },
+                      currentStoryContainerId: storyContainer.id,
                     });
                     onHide();
                   },
@@ -72,9 +70,7 @@ export const Tool = () => {
                   title: "All",
                   onClick: () => {
                     updateGlobals({
-                      storyContainerAddon: {
-                        currentStoryContainerId: allStoryContainersId,
-                      },
+                      currentStoryContainerId: allStoryContainersId,
                     });
                     onHide();
                   },
