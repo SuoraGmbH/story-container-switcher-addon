@@ -1,6 +1,6 @@
 import { addons, types } from "@storybook/addons";
 
-import { ADDON_ID, TOOL_ID, PANEL_ID, TAB_ID } from "../constants";
+import { ADDON_ID, TOOL_ID } from "../constants";
 import { Tool } from "../Tool";
 
 // Register the addon
