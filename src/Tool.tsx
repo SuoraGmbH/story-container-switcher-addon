@@ -24,6 +24,10 @@ export const Tool = () => {
   if (contexts.length === 0) {
     return null;
   }
+  const active =
+    currentContextId !== undefined &&
+    Boolean(contexts.find(({ id }) => id === currentContextId));
+
   return (
     <>
       <WithTooltip
@@ -80,7 +84,7 @@ export const Tool = () => {
         <IconButton
           key="context"
           title="Change the context of the preview"
-          active={currentContextId !== undefined}
+          active={active}
         >
           <Icons icon="box" />
         </IconButton>
