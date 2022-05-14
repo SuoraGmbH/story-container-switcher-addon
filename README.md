@@ -1,12 +1,13 @@
 <!-- README START -->
 
-# Storybook Addon: Story Container Switcher 
+# Storybook Addon: Story Container Switcher
 
 Allows you to define containers that will be wrapped around your stories.
 It offers a UI to switch between the containers, and also supports displaying your stories in all containers at once.
 
 Below is an example on how to define containers for a story.
 ![Screenshot of the addon](./docs/img.png)
+
 ```js
 Primary.parameters = {
   storyContainers: [
@@ -36,11 +37,11 @@ Primary.parameters = {
   ],
 };
 ```
- 
+
 See the file [button.stories.js](stories/button.stories.js) for a full example.
 You can also define the containers globally, see [preview.js](.storybook/preview.js).
 
-### Development scripts
+## Development scripts
 
 - `yarn start` runs babel in watch mode and starts Storybook
 - `yarn build` build and package your addon code
