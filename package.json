@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-story-container-switcher",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "description": "Allows you to switch between story containers",
   "keywords": [
     "storybook-addons"
