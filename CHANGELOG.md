@@ -1,3 +1,15 @@
+# v0.0.5 (Sat May 21 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Also support react 18 🦜 ([@hco](https://github.com/hco))
+
+#### Authors: 1
+
+- Hans-Christian Otto ([@hco](https://github.com/hco))
+
+---
+
 # v0.0.4 (Sat May 14 2022)
 
 #### ⚠️ Pushed to `main`
