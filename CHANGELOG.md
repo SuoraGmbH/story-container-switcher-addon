@@ -1,3 +1,15 @@
+# v0.1.0 (Sun May 22 2022)
+
+#### 🚀 Enhancement
+
+- Update documentation [#3](https://github.com/SuoraGmbH/story-container-switcher-addon/pull/3) ([@Anshuman71](https://github.com/Anshuman71))
+
+#### Authors: 1
+
+- Anshuman Bhardwaj ([@Anshuman71](https://github.com/Anshuman71))
+
+---
+
 # v0.0.5 (Sat May 21 2022)
 
 #### ⚠️ Pushed to `main`
