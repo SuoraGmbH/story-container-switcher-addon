@@ -1,47 +1,56 @@
-<!-- README START -->
+# Story Container Switcher
 
-# Storybook Addon: Story Container Switcher
+<!-- Badges -->
+<span class="badge-npmversion"><a href="https://www.npmjs.com/package/storybook-addon-story-container-switcher" title="View this project on NPM"><img src="https://img.shields.io/npm/v/storybook-addon-story-container-switcher?color=%232980b9" alt="NPM version" /></a></span>
+<span class="badge-npmdownloads"><a href="https://www.npmjs.com/package/storybook-addon-story-container-switcher" title="View this project on NPM"><img src="https://img.shields.io/npm/dm/storybook-addon-story-container-switcher.svg" alt="NPM downloads" /></a></span>
+<span class="badge-npmversion"><a href="https://www.npmjs.com/package/storybook-addon-story-container-switcher" title="View this project on NPM"><img src="https://img.shields.io/bundlephobia/min/storybook-addon-story-container-switcher.svg" alt="bundle size" /></a></span>
+<span class="badge-npmversion"><a href="https://www.npmjs.com/package/storybook-addon-story-container-switcher" title="View this project on NPM"><img src="https://img.shields.io/npm/l/storybook-addon-story-container-switcher" alt="MIT license" /></a></span>
 
-Allows you to define containers that will be wrapped around your stories.
-It offers a UI to switch between the containers, and also supports displaying your stories in all containers at once.
+A Storybook plugin that allows you to view your stories inside different container components like Modal, Dialog, Drawer or even better — all at once. 
 
-Below is an example on how to define containers for a story.
-![Screenshot of the addon](./docs/img.png)
+## Demo
 
-```js
-Primary.parameters = {
-  storyContainers: [
-    {
-      id: "modal",
-      label: "Modal",
-      container: YourFancyModalComponent,
-    },
-    {
-      id: "inline",
-      label: "Inline",
-      container: ({ children }) => (
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            backgroundColor: "#0cf",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {children}
-        </div>
-      ),
-    },
-  ],
-};
+[Live example](https://storybook-addon-story-container-switcher.vercel.app/)
+
+![Video](./docs/storybook-addon-story-container-switcher-demo.mp4)
+
+## Installation
+
+Install the following npm module:
+
+```shell
+npm i --save-dev storybook-addon-story-container-switcher
+```
+or with yarn:
+```shell
+yarn add -D storybook-addon-story-container-switcher
 ```
 
-See the file [button.stories.js](stories/button.stories.js) for a full example.
-You can also define the containers globally, see [preview.js](.storybook/preview.js).
+## Configuration
 
-## Development scripts
+You need to configure the plugin before it can be used in the Storybook.
 
-- `yarn start` runs babel in watch mode and starts Storybook
-- `yarn build` build and package your addon code
+1. Add the addon to the addons list in `.storybook/main.js`
+
+    ```js
+    module.exports = {
+        addons: [
+            // all other addons
+            'storybook-addon-story-container-switcher'
+        ]
+    };
+    ```
+
+2. Add the parameters to the `.storybook/preview.js`
+    ```js
+    export const parameters = {
+      storyContainers: [
+        {
+          id: "modal",
+          label: "Modal",
+          container: YourFavoriteModal
+        },
+        // more containers
+      ]
+    }
+    ```
