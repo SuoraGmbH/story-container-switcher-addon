@@ -10,9 +10,11 @@ A Storybook plugin that allows you to view your stories inside different contain
 
 ## Demo
 
-[Live example](https://storybook-addon-story-container-switcher.vercel.app/)
+[Live example](https://storybook-addon-story-container-switcher.vercel.app/) |
+[Example repository](https://github.com/hco/storybook-test/)
 
-![Video](./docs/storybook-addon-story-container-switcher-demo.mp4)
+https://user-images.githubusercontent.com/28081510/169690828-11dc284b-5500-4ee9-ae01-4feb73ff453d.mp4
+
 
 ## Installation
 
